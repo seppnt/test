@@ -1,0 +1,18 @@
+.lista {
+display: flex;
+}
+
+.card {
+height: 90px;
+width: 90px;
+margin: 4px;
+}
+.player-board {
+display: flex;
+align-items: center;
+}
+
+.enemy-board {
+display: flex;
+align-items: center;
+}

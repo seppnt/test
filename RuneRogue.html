@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="estilo.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+		<p>player HP: {{ player.hp }} Mana: {{ player.mana }} </p>
+		<p>bot HP: {{ bot.hp }} </p>
+        <p>target: {{ target1 }} </p>
+
+        <p>turn: {{ turnState }}</p>
+		<button @click="turn()">turn</button>
+	</div>
+
+
+<br><br>
+<div class="enemy-board">
+  <div class="board-row" v-for="(row, rowIndex) in bot.board" :key="rowIndex">
+    <div v-for="(card, colIndex) in row.slice().reverse()" :key="colIndex">
+      <button class="card" @click="target(rowIndex, bot.board[0].length - 1 - colIndex)">
+        <span v-if="card">{{ card.name }} <br> A:{{ card.atk }} || D:{{ card.hp }}</span>
+        <span v-else>Empty</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<p>board player</p>
+<div class="player-board">
+<div class="board-row" v-for="(row, rowIndex) in player.board" :key="rowIndex">
+<div v-for="(card, colIndex) in row" :key="colIndex">
+<button class="card" @click="target(rowIndex, colIndex)">
+    <span v-if="card">{{ card.name }} <br> A:{{ card.atk }} || D:{{ card.hp }}</span>
+    <span v-else>Empty</span>
+</button>
+
+</div>
+</div>
+</div>
+
+<p>hand</p>
+	<div class="lista">
+		<div v-for="(card, index) in player.hand" :key="index">
+			<button @click="play(index)"  class="card">{{ card.name }} <br> C:{{ card.cost}}</button>
+		</div>
+	</div>
+  </div>
+<script src="data.js"></script>
+<script src="battle.js"></script>
+<script src="turn.js"></script>
+<script src="play.js"></script>
+<script src="app.js"></script>
+<script>
+/*
+sistema de compra de cartas
+sistema do inimigo jogar cartas
+sistema de realizar efeitos quando compra carta
+*/
+</script>
+</body>
+
+</html>
