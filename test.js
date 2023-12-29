@@ -1,1 +1,2 @@
-alert(5)
+let animal = "lagarto"
+alert(animal)
